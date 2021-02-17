@@ -1,0 +1,43 @@
+@import "~@elastic/eui/src/theme_light.scss";
+
+.wrapped {
+  width: 94%;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.wrapped-tight {
+  width: 60%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.euiTableRowCell {
+  vertical-align: top;
+}
+
+.euiFormRow__group {
+  font-size: 0.75rem;
+  line-height: 1.5em;
+  color: #1a1c21;
+  text-align: right;
+}
+
+.euiCard.euiCard--horizontal.euiCard--hasIcon .euiCard__top,
+.euiCard.euiCard--horizontal.euiCard--hasIcon .euiCard__content {
+  margin-top: 1.75em;
+}
+
+@media (max-width: 992px) {
+  .wrapped-tight {
+    width: 94%;
+  }
+
+  .euiFormRow__group {
+    font-size: 1rem;
+    text-align: left;
+    display: block;
+    margin-top: 2em;
+  }
+}
