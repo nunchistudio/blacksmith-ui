@@ -6,6 +6,6 @@ addons.setConfig({
     base: 'light',
     brandTitle: 'Blacksmith with Elastic UI',
     brandUrl: 'https://nunchi.studio/blacksmith',
-    brandImage: 'http://nunchi.studio/assets/blacksmith/logo.svg',
+    brandImage: 'https://nunchi.studio/assets/blacksmith/logo.svg',
   }),
 });
