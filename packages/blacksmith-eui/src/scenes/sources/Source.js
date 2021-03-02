@@ -45,7 +45,7 @@ const columns = (props) => [
           return 'CRON';
         case 'cdc':
           return 'CDC';
-        case 'subscriber':
+        case 'subscription':
           return 'Subscription';
       };
     },
@@ -99,17 +99,17 @@ const columns = (props) => [
             </ul>
           );
 
-        case 'subscriber':
+        case 'subscription':
           return (
             <ul>
-              {row.mode.subscriber && row.mode.subscriber.topic &&
+              {row.mode.subscription && row.mode.subscription.topic &&
                 <li>
-                  <strong>Topic:</strong> <EuiCode>{row.mode.subscriber.topic}</EuiCode>
+                  <strong>Topic:</strong> <EuiCode>{row.mode.subscription.topic}</EuiCode>
                 </li>
               }
-              {row.mode.subscriber && row.mode.subscriber.subscription &&
+              {row.mode.subscription && row.mode.subscription.subscription &&
                 <li>
-                  <strong>Subscription:</strong> <EuiCode>{row.mode.subscriber.subscription}</EuiCode>
+                  <strong>Subscription:</strong> <EuiCode>{row.mode.subscription.subscription}</EuiCode>
                 </li>
               }
             </ul>

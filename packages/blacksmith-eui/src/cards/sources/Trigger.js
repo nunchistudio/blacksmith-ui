@@ -213,7 +213,7 @@ export class CardTrigger extends React.Component {
       case 'cdc':
         mode = 'CDC';
         break;
-      case 'subscriber':
+      case 'subscription':
         mode = 'Subscription';
         break;
     };
@@ -273,7 +273,7 @@ export class CardTrigger extends React.Component {
         });
         break;
 
-      case 'subscriber':
+      case 'subscription':
         items.push({
           id: 'settings__',
           key: 'Settings',
@@ -281,12 +281,12 @@ export class CardTrigger extends React.Component {
         }, {
           id: 'settings__topic',
           key: 'Settings / Topic',
-          value: trigger.mode.subscriber.topic,
+          value: trigger.mode.subscription.topic,
           isValueCode: true,
         }, {
           id: 'settings__subscription',
           key: 'Settings / Subscription',
-          value: trigger.mode.subscriber.subscription,
+          value: trigger.mode.subscription.subscription,
           isValueCode: true,
         });
         break;

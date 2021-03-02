@@ -112,7 +112,7 @@ export class Trigger extends React.Component {
       case 'cdc':
         mode = 'CDC';
         break;
-      case 'subscriber':
+      case 'subscription':
         mode = 'Subscription';
         break;
     };
