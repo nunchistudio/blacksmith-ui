@@ -100,9 +100,9 @@ export class CardJob extends React.Component {
     hideBadge: false,
     hideName: false,
     hideLink: false,
-    linkToEvent: '/admin/store/event.html?id=:event_id',
-    linkToJob: '/admin/store/job.html?id=:job_id',
-    linkToDestination: '/admin/destination.html?name=:destination_name',
+    linkToEvent: '/admin/store/event.html?event_id=:event_id',
+    linkToJob: '/admin/store/job.html?job_id=:job_id',
+    linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
   };
 
   /**
@@ -152,7 +152,7 @@ export class CardJob extends React.Component {
   };
 
   /**
-   * Callback function used when the job us loaded.
+   * Callback function used when the job is loaded.
    */
   cardDidUpdate() {
     if (this.props.onJobLoaded) {

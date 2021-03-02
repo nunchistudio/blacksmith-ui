@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import moment from 'moment';
 import {
   EuiCard, EuiIcon, EuiButton,
   EuiBasicTable, EuiCode,
@@ -12,20 +11,19 @@ import { columns } from '../_shared';
 import { Loading } from '../../scenes';
 
 /**
- * Card component for a Blacksmith destination. It is used by the scene
- * `Destination`.
+ * Card component for a Blacksmith action. It is used by the scene `Action`.
  *
  * This card can handle the request to the Blacksmith API. It is up to the user
- * to either pass the `axios` instance to use with the destination name to
- * retrieve, or pass the destination object already known.
+ * to either pass the `axios` instance to use with the destination and action names
+ * to retrieve, or pass the action object already known.
  *
  * **Import:**
  *
  * ```js
- * import { CardDestination } from '@nunchistudio/blacksmith-eui';
+ * import { CardAction } from '@nunchistudio/blacksmith-eui';
  * ```
  */
-export class CardDestination extends React.Component {
+export class CardAction extends React.Component {
   constructor(props) {
     super(props);
   };
@@ -41,16 +39,21 @@ export class CardDestination extends React.Component {
     axios: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 
     /**
-     * The destination name to retrieve with the Blacksmith API.
+     * The destination name of the action to retrieve with the Blacksmith API.
      */
     destination_name: PropTypes.string,
 
     /**
-     * The destination object returned by the Blacksmith API. If none is
-     * provided, the card will do a request to the API using the `axios` instance
-     * and the provided destination name.
+     * The action name to retrieve with the Blacksmith API.
      */
-    destination: PropTypes.object,
+    action_name: PropTypes.string,
+
+    /**
+     * The action object returned by the Blacksmith API. If none is provided,
+     * the card will do a request to the API using the `axios` instance and the
+     * provided destination and action names.
+     */
+    action: PropTypes.object,
 
     /**
      * Do you want to hide the card's badge?
@@ -63,7 +66,7 @@ export class CardDestination extends React.Component {
     hideName: PropTypes.bool,
 
     /**
-     * Do you want to hide the link to the event?
+     * Do you want to hide the link to the action?
      */
     hideLink: PropTypes.bool,
 
@@ -77,12 +80,22 @@ export class CardDestination extends React.Component {
     linkToDestination: PropTypes.string,
 
     /**
-     * Callback function when the destination is loaded.
+     * Front-end route to access a action.
+     *
+     * **Route params:**
+     *
+     *   - `:destination_name`: Name of the destination.
+     *   - `:action_name`: Name of the action.
+     */
+    linkToAction: PropTypes.string,
+
+    /**
+     * Callback function when the action is loaded.
      *
      * @param statusCode - The HTTP status code returned by the Blacksmith API.
-     * @param destination - The destination object returned by the Blacksmith API.
+     * @param action - The action object returned by the Blacksmith API.
      */
-    onDestinationLoaded: PropTypes.func,
+    onActionLoaded: PropTypes.func,
   };
 
   /**
@@ -93,6 +106,7 @@ export class CardDestination extends React.Component {
     hideName: false,
     hideLink: false,
     linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
+    linkToAction: '/admin/destinations/action.html?destination_name=:destination_name&action_name=:action_name',
   };
 
   /**
@@ -102,7 +116,7 @@ export class CardDestination extends React.Component {
     isLoading: true,
     statusCode: 0,
     data: {
-      destination: null,
+      action: null,
     },
   };
 
@@ -111,14 +125,14 @@ export class CardDestination extends React.Component {
    * Otherwise update the state with some of the properties.
    */
   async componentDidMount() {
-    if (!this.props.destination) {
+    if (!this.props.action) {
       await this.request();
     } else {
       this.setState((prevState) => ({ ...prevState,
         isLoading: false,
         statusCode: 200,
         data: { ...prevState.data,
-          destination: this.props.destination,
+          action: this.props.action,
         }
       }), this.cardDidUpdate)
     }
@@ -129,15 +143,15 @@ export class CardDestination extends React.Component {
    */
   async request() {
     let newStatusCode = 500;
-    let destinationData = {};
+    let actionData = {};
 
     let response = {};
     try {
-      response = await this.props.axios.get(`/destinations/${this.props.destination_name}`);
-      destinationData = response.data.data;
+      response = await this.props.axios.get(`/destinations/${this.props.destination_name}/actions/${this.props.action_name}`);
+      actionData = response.data.data;
       newStatusCode = response.data.statusCode;
     } catch (error) {
-      destinationData = null;
+      actionData = null;
       newStatusCode = error.response
         ? error.response.status
         : 500;
@@ -147,17 +161,17 @@ export class CardDestination extends React.Component {
       isLoading: false,
       statusCode: newStatusCode,
       data: { ...prevState.data,
-        destination: destinationData,
+        action: actionData,
       },
     }), this.cardDidUpdate);
   };
 
   /**
-   * Callback function used when the destination is loaded.
+   * Callback function used when the action is loaded.
    */
   cardDidUpdate() {
-    if (this.props.onDestinationLoaded) {
-      this.props.onDestinationLoaded(this.state.statusCode, this.state.data.destination);
+    if (this.props.onActionLoaded) {
+      this.props.onActionLoaded(this.state.statusCode, this.state.data.action);
     }
   };
 
@@ -165,14 +179,14 @@ export class CardDestination extends React.Component {
    * Render the component.
    */
   render() {
-    if (this.state.data.destination == null || this.state.data.destination.name == '') {
+    if (this.state.data.action == null || this.state.data.action.name == '') {
       return (
         <EuiCard layout="horizontal" titleSize="xs"
           title=""
           description=""
-          betaBadgeLabel={this.props.hideBadge == false ? 'Destination' : null}
+          betaBadgeLabel={this.props.hideBadge == false ? 'Action' : null}
         >
-          <Loading resourceKind="destination"
+          <Loading resourceKind="action"
             statusCode={this.state.statusCode}
             isLoading={this.state.isLoading}
           />
@@ -180,67 +194,54 @@ export class CardDestination extends React.Component {
       );
     }
 
-    const destination = this.state.data.destination;
-    let linkToDestination;
-    if (destination !== null) {
-      linkToDestination = this.props.linkToDestination.replace(':destination_name', destination.name);
+    const action = this.state.data.action;
+    let linkToDestination, linkToAction;
+    if (action !== null) {
+      linkToDestination = this.props.linkToDestination.replace(':destination_name', this.props.destination_name);
+      linkToAction = this.props.linkToAction.replace(':destination_name', this.props.destination_name);
+      linkToAction = linkToAction.replace(':action_name', action.name);
+    }
+
+    if (action.schedule == null) {
+      action.schedule = {};
     }
 
     const items = [
       {
-        id: 'defaults__',
-        key: 'Defaults',
-        value: null
+        id: 'destination',
+        key: 'Destination',
+        value: this.props.destination_name,
+        isValueCode: true,
+        withValueLink: linkToDestination,
       }, {
-        id: 'defaults__realtime',
-        key: 'Defaults / Real-time load',
-        value: destination.options.schedule.realtime,
+        id: 'settings__',
+        key: 'Settings',
+        value: null,
+      }, {
+        id: 'settings__realtime',
+        key: 'Settings / Real-time load',
+        value: typeof action.schedule.realtime === 'boolean'
+          ? action.schedule.realtime
+          : 'Inherited from destination',
       }, {
         id: 'defaults__schedule_interval',
         key: 'Defaults / Retries interval',
-        value: destination.options.schedule.interval,
-        isValueCode: true,
+        value: action.schedule.interval || 'Inherited from destination',
+        isValueCode: action.schedule.interval ? true : false,
       }, {
         id: 'defaults__max_retries',
         key: 'Defaults / Maximum retries',
-        value: destination.options.schedule.max_retries,
-        isValueCode: true,
+        value: action.schedule.max_retries || 'Inherited from destination',
+        isValueCode: action.schedule.max_retries ? true : false,
       },
     ];
 
-    if (destination.options.versions) {
-      if (destination.options.default_version) {
-        items.push({
-          id: 'defaults__version',
-          key: 'Defaults / Version',
-          value: destination.options.default_version,
-          isValueCode: true,
-        });
-      }
-
-      items.push({
-        id: 'versions__',
-        key: 'Versions',
-        value: null,
-      });
-
-      Object.keys(destination.options.versions).map((k, i) => {
-        items.push({
-          id: `versions__${k}`,
-          key: `Versions / ${k}`,
-          value: moment.parseZone(destination.options.versions[k]).utc().format('DD MMMM YYYY HH:mm:ss'),
-          isKeyCode: true,
-          isValueCode: true,
-        });
-      });
-    }
-
     return (
       <EuiCard layout="horizontal" description="" titleSize="xs"
-        title={this.props.hideName == false ? <EuiCode>{destination.name}</EuiCode> : null}
-        betaBadgeLabel={this.props.hideBadge == false ? 'Destination' : null}
+        title={this.props.hideName == false ? <EuiCode>{action.name}</EuiCode> : null}
+        betaBadgeLabel={this.props.hideBadge == false ? 'Action' : null}
         icon={this.props.hideName == false
-          ? <EuiIcon size="l" type="exportAction" color="subdued" />
+          ? <EuiIcon size="l" type="logstashIf" color="subdued" />
           : null}
       >
         <EuiBasicTable responsive={false} items={items} columns={columns} />
@@ -248,7 +249,7 @@ export class CardDestination extends React.Component {
         {this.props.hideLink === false &&
           <React.Fragment>
             <EuiSpacer size="xl" />
-            <EuiButton href={linkToDestination}>View destination</EuiButton>
+            <EuiButton href={linkToAction}>View action</EuiButton>
           </React.Fragment>
         }
 

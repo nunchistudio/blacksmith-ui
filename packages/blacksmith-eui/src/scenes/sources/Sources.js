@@ -64,7 +64,7 @@ export class Sources extends React.Component {
   static defaultProps = {
     hideBadges: false,
     hideNames: false,
-    linkToSource: '/admin/source.html?name=:source_name',
+    linkToSource: '/admin/sources/source.html?source_name=:source_name',
   };
 
   /**

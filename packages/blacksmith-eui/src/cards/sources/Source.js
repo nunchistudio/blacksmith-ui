@@ -91,7 +91,7 @@ export class CardSource extends React.Component {
     hideBadge: false,
     hideName: false,
     hideLink: false,
-    linkToSource: '/admin/source.html?name=:source_name',
+    linkToSource: '/admin/sources/source.html?source_name=:source_name',
   };
 
   /**
@@ -152,7 +152,7 @@ export class CardSource extends React.Component {
   };
 
   /**
-   * Callback function used when the source us loaded.
+   * Callback function used when the source is loaded.
    */
   cardDidUpdate() {
     if (this.props.onSourceLoaded) {

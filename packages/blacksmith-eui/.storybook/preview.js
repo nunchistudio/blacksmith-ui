@@ -1,6 +1,6 @@
 export const parameters = {
   actions: {
-    argTypesRegex: "^on[A-Z].*",
+    argTypesRegex: '^on[A-Z].*',
   },
   options: {
     storySort: {
@@ -9,15 +9,15 @@ export const parameters = {
         'Blacksmith UI kit',
         'Sources', [
           'Scenes', [
-            'Source', 'Sources',
+            'Sources', 'Source', 'Trigger',
           ],
-          'Cards', ['Source'],
+          'Cards', ['Source', 'Trigger'],
         ],
         'Destinations', [
           'Scenes', [
-            'Destination', 'Destinations',
+            'Destinations', 'Destination', 'Action',
           ],
-          'Cards', ['Destination'],
+          'Cards', ['Destination', 'Action'],
         ],
         'Store', [
           'Scenes', [

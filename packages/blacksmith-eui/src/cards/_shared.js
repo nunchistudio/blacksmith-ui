@@ -1,5 +1,5 @@
 import {
-  EuiCode,
+  EuiCode, EuiLink,
 } from '@elastic/eui';
 
 /**
@@ -73,12 +73,18 @@ export const columns = [
         return ('No');
       }
 
-      if (value === '01 January 0001 00:00:00') {
+      if (value && value.toString().startsWith('Inherited')) {
+        return (<em>{value}</em>);
+      } else if (value === '01 January 0001 00:00:00') {
         return (<em>Not deprecated</em>);
       }
 
+      if (item.withValueLink) {
+        value = <EuiLink href={item.withValueLink}>{value}</EuiLink>;
+      }
+
       if (item.isValueCode == true) {
-        return (<EuiCode>{value.toString()}</EuiCode>);
+        return (<EuiCode>{value}</EuiCode>);
       }
 
       return (value);

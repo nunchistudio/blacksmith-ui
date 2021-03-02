@@ -75,9 +75,9 @@ export class Job extends React.Component {
    * Default values for the properties.
    */
   static defaultProps = {
-    linkToEvent: '/admin/store/event.html?id=:event_id',
-    linkToJob: '/admin/store/job.html?id=:job_id',
-    linkToDestination: '/admin/destination.html?name=:destination_name',
+    linkToEvent: '/admin/store/event.html?event_id=:event_id',
+    linkToJob: '/admin/store/job.html?job_id=:job_id',
+    linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
   };
 
   /**

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   EuiFlexGroup, EuiFlexGrid, EuiFlexItem,
   EuiTitle, EuiToolTip, EuiText, EuiTextColor,
-  EuiCode,  EuiIcon, EuiBasicTable,
+  EuiLink, EuiCode, EuiIcon, EuiBasicTable,
   EuiSpacer,
 } from '@elastic/eui';
 
@@ -20,9 +20,14 @@ const columns = (props) => [
     width: '35%',
     truncateText: true,
     textOnly: true,
-    render: (name, row) => {
+    render: (action, row) => {
+      let link = props.linkToAction.replace(':destination_name', props.destination_name);
+      link = link.replace(':action_name', action);
+
       return (
-        <EuiCode>{name}</EuiCode>
+        <EuiCode>
+          <EuiLink href={link}>{action}</EuiLink>
+        </EuiCode>
       );
     },
   },
@@ -106,6 +111,23 @@ export class Destination extends React.Component {
      * The axios instance to use for communicating with the Blacksmith API.
      */
     axios: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+
+    /**
+     * Front-end route to access the action.
+     *
+     * **Route params:**
+     *
+     *   - `:destination_name`: Name of the destination.
+     *   - `:action_name`: Name of the action.
+     */
+    linkToAction: PropTypes.string,
+  };
+
+  /**
+   * Default values for the properties.
+   */
+  static defaultProps = {
+    linkToAction: '/admin/destinations/action.html?destination_name=:destination_name&action_name=:action_name',
   };
 
   /**

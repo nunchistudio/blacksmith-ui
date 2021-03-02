@@ -115,3 +115,35 @@ export const destinations = {
     ]
   },
 };
+
+export const action = {
+  empty: {
+    "statusCode": 200,
+    "message": "Successful",
+    "data": {
+      "name": "action-one",
+      "schedule": null
+    }
+  },
+
+  filled: {
+    "statusCode": 200,
+    "message": "Successful",
+    "data": {
+      "name": "action-one",
+      "schedule": {
+        "realtime": false,
+        "interval": "@every 12h",
+        "max_retries": 10
+      },
+      "semaphore": {
+        "key": "actions/destination-one/action-one",
+        "is_applicable": true,
+        "is_acquired": true,
+        "acquirer_name": "blacksmith-scheduler",
+        "acquirer_address": ":9091",
+        "session_id": "1p1RzXlka08MaE2ht3jRWW36isZ"
+      }
+    }
+  },
+};

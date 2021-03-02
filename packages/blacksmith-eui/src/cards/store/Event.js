@@ -91,8 +91,8 @@ export class CardEvent extends React.Component {
     hideBadge: false,
     hideName: false,
     hideLink: false,
-    linkToEvent: '/admin/store/event.html?id=:event_id',
-    linkToSource: '/admin/source.html?name=:source_name',
+    linkToEvent: '/admin/store/event.html?event_id=:event_id',
+    linkToSource: '/admin/sources/source.html?source_name=:source_name',
   };
 
   /**
@@ -142,7 +142,7 @@ export class CardEvent extends React.Component {
   };
 
   /**
-   * Callback function used when the event us loaded.
+   * Callback function used when the event is loaded.
    */
   cardDidUpdate() {
     if (this.props.onEventLoaded) {

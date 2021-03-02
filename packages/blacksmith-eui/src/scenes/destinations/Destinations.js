@@ -64,7 +64,7 @@ export class Destinations extends React.Component {
   static defaultProps = {
     hideBadges: false,
     hideNames: false,
-    linkToDestination: '/admin/destination.html?name=:destination_name',
+    linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
   };
 
   /**

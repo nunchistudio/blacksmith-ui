@@ -44,8 +44,13 @@ export const columns = {
       name: 'Trigger',
       width: '20%',
       render: (trigger, row) => {
+        let link = props.linkToTrigger.replace(':source_name', row.source);
+        link = link.replace(':trigger_name', trigger);
+
         return (
-          <EuiCode>{trigger}</EuiCode>
+          <EuiCode>
+            <EuiLink href={link}>{trigger}</EuiLink>
+          </EuiCode>
         );
       },
     },
@@ -110,8 +115,13 @@ export const columns = {
       name: 'Action',
       width: '20%',
       render: (action, row) => {
+        let link = props.linkToAction.replace(':destination_name', row.destination);
+        link = link.replace(':action_name', action);
+
         return (
-          <EuiCode>{action}</EuiCode>
+          <EuiCode>
+            <EuiLink href={link}>{action}</EuiLink>
+          </EuiCode>
         );
       },
     },

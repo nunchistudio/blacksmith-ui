@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   EuiFlexGroup, EuiFlexGrid, EuiFlexItem,
   EuiTitle, EuiToolTip, EuiText, EuiTextColor,
-  EuiCode,  EuiIcon, EuiBasicTable,
+  EuiLink, EuiCode, EuiIcon, EuiBasicTable,
   EuiSpacer,
 } from '@elastic/eui';
 
@@ -20,9 +20,14 @@ const columns = (props) => [
     width: '35%',
     truncateText: true,
     textOnly: true,
-    render: (name, row) => {
+    render: (trigger, row) => {
+      let link = props.linkToTrigger.replace(':source_name', props.source_name);
+      link = link.replace(':trigger_name', trigger);
+
       return (
-        <EuiCode>{name}</EuiCode>
+        <EuiCode>
+          <EuiLink href={link}>{trigger}</EuiLink>
+        </EuiCode>
       );
     },
   },
@@ -80,8 +85,8 @@ const columns = (props) => [
               <li>
                 <strong>Interval:</strong>
                 {row.mode.cron && row.mode.cron.interval
-                  ? <> <EuiCode>{row.mode.cron.interval}</EuiCode></>
-                  : <> <em>Inherited from source</em></>
+                  ? <><EuiCode>{row.mode.cron.interval}</EuiCode></>
+                  : <><em>Inherited from source</em></>
                 }
               </li>
             </ul>
@@ -144,6 +149,23 @@ export class Source extends React.Component {
      * The axios instance to use for communicating with the Blacksmith API.
      */
     axios: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+
+    /**
+     * Front-end route to access the trigger.
+     *
+     * **Route params:**
+     *
+     *   - `:source_name`: Name of the source.
+     *   - `:trigger_name`: Name of the trigger.
+     */
+    linkToTrigger: PropTypes.string,
+  };
+
+  /**
+   * Default values for the properties.
+   */
+  static defaultProps = {
+    linkToTrigger: '/admin/sources/trigger.html?source_name=:source_name&trigger_name=:trigger_name',
   };
 
   /**
