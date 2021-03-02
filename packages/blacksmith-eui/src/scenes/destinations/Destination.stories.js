@@ -9,6 +9,9 @@ import '../../storybook.scss';
 export default {
   title: 'Destinations/Scenes/Destination',
   component: Destination,
+  args: {
+    destination_name: 'destination-one',
+  },
 };
 
 const Template = (args) => {

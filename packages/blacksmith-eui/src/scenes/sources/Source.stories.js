@@ -9,6 +9,9 @@ import '../../storybook.scss';
 export default {
   title: 'Sources/Scenes/Source',
   component: Source,
+  args: {
+    source_name: 'source-one',
+  },
 };
 
 const Template = (args) => {

@@ -5,7 +5,7 @@ import {
   EuiFlexGroup, EuiFlexGrid, EuiFlexItem,
   EuiTitle, EuiToolTip, EuiText, EuiTextColor,
   EuiLink, EuiCode, EuiIcon, EuiBasicTable,
-  EuiSpacer,
+  EuiAccordion,
 } from '@elastic/eui';
 
 import { CardDestination } from '../../cards';
@@ -173,39 +173,46 @@ export class Destination extends React.Component {
             <CardDestination {...this.props} hideLink={true} onDestinationLoaded={onDestinationLoaded} />
           </EuiFlexItem>
           <EuiFlexItem grow={true}>
-            <EuiFlexGroup gutterSize="l" alignItems="center" responsive={false}>
-              <EuiFlexItem grow={false}>
-                <EuiIcon type="logstashIf" size="l" />
-              </EuiFlexItem>
+            <EuiAccordion initialIsOpen id="show_actions" key="show_actions"
+              paddingSize="xl"
+              className="euiAccordionForm"
+              buttonClassName="euiAccordionForm__button"
+              buttonContent={
+                <>
+                  <EuiFlexGroup gutterSize="l" alignItems="center" responsive={false}>
+                    <EuiFlexItem grow={false}>
+                      <EuiIcon type="logstashIf" size="l" />
+                    </EuiFlexItem>
 
-              <EuiFlexItem>
-                <EuiTitle size="xs">
-                  <h3>Actions</h3>
-                </EuiTitle>
-                <EuiText size="s">
-                  <p>
-                    <EuiTextColor color="subdued">
-                      Actions registered for the destination <EuiCode>{this.props.destination_name}</EuiCode>.
-                    </EuiTextColor>
-                  </p>
-                </EuiText>
-              </EuiFlexItem>
-            </EuiFlexGroup>
-
-            <EuiSpacer size="xl" />
-
-            <EuiFlexGrid columns={1} gutterSize="s">
-              <EuiFlexItem grow={true}>
-                <EuiBasicTable responsive={true} loading={this.state.isLoading}
-                  itemId="id"
-                  columns={columns({ ...this.props, destination_name: destination.name })}
-                  items={destination.actions}
-                  noItemsMessage={this.state.isLoading
-                    ? `Loading registered actions...`
-                    : `No registered actions found`}
-                />
-              </EuiFlexItem>
-            </EuiFlexGrid>
+                    <EuiFlexItem>
+                      <EuiTitle size="xs">
+                        <h3>Actions</h3>
+                      </EuiTitle>
+                      <EuiText size="s">
+                        <p>
+                          <EuiTextColor color="subdued">
+                            Actions registered for the destination <EuiCode>{this.props.destination_name}</EuiCode>.
+                          </EuiTextColor>
+                        </p>
+                      </EuiText>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </>
+              }
+            >
+              <EuiFlexGrid columns={1} gutterSize="s">
+                <EuiFlexItem grow={true}>
+                  <EuiBasicTable responsive={true} loading={this.state.isLoading}
+                    itemId="id"
+                    columns={columns({ ...this.props, destination_name: destination.name })}
+                    items={destination.actions}
+                    noItemsMessage={this.state.isLoading
+                      ? `Loading registered actions...`
+                      : `No registered actions found`}
+                  />
+                </EuiFlexItem>
+              </EuiFlexGrid>
+            </EuiAccordion>
           </EuiFlexItem>
         </EuiFlexGroup>
       </React.Fragment>
