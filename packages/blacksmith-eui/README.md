@@ -2,7 +2,7 @@
 
 Blacksmith UI kit is a collection of high-level, opiniated, production-ready
 React components for interacting with the [Blacksmith REST
-API](https://nunchi.studio/blacksmith/api).
+API](https://nunchi.studio/blacksmith/http).
 
 The goal is not to make a UI kit from scratch but instead leveraging
 [Elastic UI](https://elastic.github.io/eui) for a better user experience.

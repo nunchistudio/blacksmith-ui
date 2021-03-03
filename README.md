@@ -7,7 +7,7 @@ Repository holding JavaScript packages for [Blacksmith](https://nunchi.studio/bl
 - `blacksmith-eui`: The Blacksmith UI kit, built on top of
   [Elastic UI](https://elastic.github.io/eui). It is a collection of high-level,
   opiniated, production-ready React components for interacting with the
-  [Blacksmith REST API](https://nunchi.studio/blacksmith/api).
+  [Blacksmith REST API](https://nunchi.studio/blacksmith/http).
 
   [Open the Storybook](https://nunchi.studio/storybook/blacksmith-eui)
 
