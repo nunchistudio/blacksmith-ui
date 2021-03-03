@@ -166,7 +166,7 @@ export class Layout extends React.Component {
                     </EuiHeaderSectionItemButton>
                   }
                 >
-                  <EuiKeyPadMenu>
+                  <EuiKeyPadMenu style={{ width: 'auto' }}>
                     <EuiKeyPadMenuItem label="Customer portal"
                       href={this.props.linkToPortal}
                     >
@@ -182,13 +182,22 @@ export class Layout extends React.Component {
                       <EuiIcon type={this.props.iconBlacksmith} size="l" />
                     </EuiKeyPadMenuItem>
 
-                    <EuiKeyPadMenuItem label="Support & Success"
+                    <EuiKeyPadMenuItem label="Support and services"
                       href="https://nunchi.studio/support"
                       target="_blank"
                       betaBadgeLabel="External"
                       betaBadgeIconType="popout"
                     >
                       <EuiIcon type="securitySignalResolved" size="l" />
+                    </EuiKeyPadMenuItem>
+
+                    <EuiKeyPadMenuItem label="Create a new ticket"
+                      href="https://nunchi.studio/blacksmith/forms/tickets"
+                      target="_blank"
+                      betaBadgeLabel="External"
+                      betaBadgeIconType="popout"
+                    >
+                      <EuiIcon type="help" size="l" />
                     </EuiKeyPadMenuItem>
                   </EuiKeyPadMenu>
                 </EuiPopover>
