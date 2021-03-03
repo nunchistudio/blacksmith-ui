@@ -40,7 +40,7 @@ export const options = {
       }
     },
     "blacksmith": {
-      "version": "0.15.0"
+      "version": "0.15.1"
     },
     "go": {
       "version": "1.16",
