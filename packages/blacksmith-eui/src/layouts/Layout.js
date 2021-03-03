@@ -100,9 +100,9 @@ export class Layout extends React.Component {
     linkToPortal: '/admin/portal.html',
     linkToHome: '/admin/index.html',
     linkToStore: '/admin/index.html',
-    linkToWanderer: '/admin/wanderer/index.html',
-    linkToSources: '/admin/sources/index.html',
-    linkToDestinations: '/admin/destinations/index.html',
+    linkToWanderer: '/admin/wanderer.html',
+    linkToSources: '/admin/sources.html',
+    linkToDestinations: '/admin/destinations.html',
     linkToOptions: '/admin/options.html',
   };
 
