@@ -85,6 +85,16 @@ export class CardJob extends React.Component {
     linkToDestination: PropTypes.string,
 
     /**
+     * Front-end route to access a action.
+     *
+     * **Route params:**
+     *
+     *   - `:destination_name`: Name of the destination.
+     *   - `:action_name`: Name of the action.
+     */
+    linkToAction: PropTypes.string,
+
+    /**
      * Callback function when the job is loaded.
      *
      * @param statusCode - The HTTP status code returned by the Blacksmith API.
@@ -103,6 +113,7 @@ export class CardJob extends React.Component {
     linkToEvent: '/admin/store/event.html?event_id=:event_id',
     linkToJob: '/admin/store/job.html?job_id=:job_id',
     linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
+    linkToAction: '/admin/destinations/action.html?destination_name=:destination_name&action_name=:action_name',
   };
 
   /**
@@ -199,12 +210,14 @@ export class CardJob extends React.Component {
     }
 
     let job = this.state.data.job;
-    let linkToEvent, linkToJob, linkToParentJob, linkToDestination;
+    let linkToEvent, linkToJob, linkToParentJob, linkToDestination, linkToAction;
     if (job !== null) {
       linkToEvent = this.props.linkToEvent.replace(':event_id', job.event_id);
       linkToJob = this.props.linkToJob.replace(':job_id', job.id);
       linkToParentJob = this.props.linkToJob.replace(':job_id', job.parent_job_id);
       linkToDestination = this.props.linkToDestination.replace(':destination_name', job.destination);
+      linkToAction = this.props.linkToAction.replace(':destination_name', job.destination);
+      linkToAction = linkToAction.replace(':action_name', job.action);
     } else {
       job = {
         context: null,
@@ -227,7 +240,7 @@ export class CardJob extends React.Component {
         </EuiText>
         <EuiSpacer size="s" />
         <EuiText>
-          <strong>Action:</strong> <EuiCode>{job.action}</EuiCode>
+          <strong>Action:</strong> <EuiCode><EuiLink href={linkToAction}>{job.action}</EuiLink></EuiCode>
         </EuiText>
 
           {job.version &&

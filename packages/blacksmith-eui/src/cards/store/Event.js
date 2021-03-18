@@ -76,6 +76,16 @@ export class CardEvent extends React.Component {
     linkToSource: PropTypes.string,
 
     /**
+     * Front-end route to access a trigger.
+     *
+     * **Route params:**
+     *
+     *   - `:source_name`: Name of the source.
+     *   - `:trigger_name`: Name of the trigger.
+     */
+     linkToTrigger: PropTypes.string,
+
+    /**
      * Callback function when the event is loaded.
      *
      * @param statusCode - The HTTP status code returned by the Blacksmith API.
@@ -93,6 +103,7 @@ export class CardEvent extends React.Component {
     hideLink: false,
     linkToEvent: '/admin/store/event.html?event_id=:event_id',
     linkToSource: '/admin/sources/source.html?source_name=:source_name',
+    linkToTrigger: '/admin/sources/trigger.html?source_name=:source_name&trigger_name=:trigger_name',
   };
 
   /**
@@ -170,10 +181,12 @@ export class CardEvent extends React.Component {
     }
 
     let event = this.state.data.event;
-    let linkToEvent, linkToSource;
+    let linkToEvent, linkToSource, linkToTrigger;
     if (event !== null) {
       linkToEvent = this.props.linkToEvent.replace(':event_id', event.id);
       linkToSource = this.props.linkToSource.replace(':source_name', event.source);
+      linkToTrigger = this.props.linkToTrigger.replace(':source_name', event.source);
+      linkToTrigger = linkToTrigger.replace(':trigger_name', event.trigger);
     } else {
       event = {
         context: null,
@@ -196,7 +209,7 @@ export class CardEvent extends React.Component {
         </EuiText>
         <EuiSpacer size="s" />
         <EuiText>
-          <strong>Trigger:</strong> <EuiCode>{event.trigger}</EuiCode>
+          <strong>Trigger:</strong> <EuiCode><EuiLink href={linkToTrigger}>{event.trigger}</EuiLink></EuiCode>
         </EuiText>
 
           {event.version &&

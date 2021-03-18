@@ -72,6 +72,16 @@ export class Event extends React.Component {
     linkToSource: PropTypes.string,
 
     /**
+     * Front-end route to access a trigger.
+     *
+     * **Route params:**
+     *
+     *   - `:source_name`: Name of the source.
+     *   - `:trigger_name`: Name of the trigger.
+     */
+    linkToTrigger: PropTypes.string,
+
+    /**
      * Front-end route to access a destination.
      *
      * **Route params:**
@@ -79,6 +89,16 @@ export class Event extends React.Component {
      *   - `:destination_name`: Name of the destination.
      */
     linkToDestination: PropTypes.string,
+
+    /**
+     * Front-end route to access a action.
+     *
+     * **Route params:**
+     *
+     *   - `:destination_name`: Name of the destination.
+     *   - `:action_name`: Name of the action.
+     */
+     linkToAction: PropTypes.string,
   };
 
   /**
@@ -88,7 +108,9 @@ export class Event extends React.Component {
     linkToEvent: '/admin/store/event.html?event_id=:event_id',
     linkToJob: '/admin/store/job.html?job_id=:job_id',
     linkToSource: '/admin/sources/source.html?source_name=:source_name',
+    linkToTrigger: '/admin/sources/trigger.html?source_name=:source_name&trigger_name=:trigger_name',
     linkToDestination: '/admin/destinations/destination.html?destination_name=:destination_name',
+    linkToAction: '/admin/destinations/action.html?destination_name=:destination_name&action_name=:action_name',
   };
 
   /**

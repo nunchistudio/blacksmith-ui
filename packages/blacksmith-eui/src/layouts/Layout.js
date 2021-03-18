@@ -192,7 +192,7 @@ export class Layout extends React.Component {
                     </EuiKeyPadMenuItem>
 
                     <EuiKeyPadMenuItem label="Create a new ticket"
-                      href="https://nunchi.studio/blacksmith/forms/tickets"
+                      href="https://nunchi.studio/blacksmith/forms/ticket"
                       target="_blank"
                       betaBadgeLabel="External"
                       betaBadgeIconType="popout"
