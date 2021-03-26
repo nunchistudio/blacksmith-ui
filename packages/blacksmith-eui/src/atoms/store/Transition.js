@@ -31,6 +31,18 @@ export class Transition extends React.Component {
    */
   render() {
     const transition = this.props.transition;
+    const errorMessage = (err) => {
+      if (err == null) {
+        return 'null';
+      }
+
+      try {
+        JSON.parse(err.message);
+        return JSON.stringify(JSON.parse(err.message), null, 2)
+      } catch (error) {
+        return JSON.stringify(err, null, 2)
+      }
+    };
 
     switch (transition.state_after) {
       case 'acknowledged':
@@ -102,13 +114,7 @@ export class Transition extends React.Component {
             }
           >
             <EuiCodeBlock isCopyable language="json">
-              {transition.error == null && 'null'}
-              {transition.error != null && typeof transition.error.message == 'object' &&
-                JSON.stringify(JSON.parse(transition.error.message), null, 2)
-              }
-              {transition.error != null && typeof transition.error.message == 'string' &&
-                JSON.stringify(transition.error, null, 2)
-              }
+              {errorMessage(transition.error)}
             </EuiCodeBlock>
           </EuiComment>
         );
@@ -126,13 +132,7 @@ export class Transition extends React.Component {
             }
           >
             <EuiCodeBlock isCopyable language="json">
-              {transition.error == null && 'null'}
-              {transition.error != null && typeof transition.error.message == 'object' &&
-                JSON.stringify(JSON.parse(transition.error.message), null, 2)
-              }
-              {transition.error != null && typeof transition.error.message == 'string' &&
-                JSON.stringify(transition.error, null, 2)
-              }
+              {errorMessage(transition.error)}
             </EuiCodeBlock>
           </EuiComment>
         );
