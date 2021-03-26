@@ -181,10 +181,11 @@ export class CardEvent extends React.Component {
     }
 
     let event = this.state.data.event;
-    let linkToEvent, linkToSource, linkToTrigger;
+    let linkToEvent, linkToSource, linkToParentEvent, linkToTrigger;
     if (event !== null) {
       linkToEvent = this.props.linkToEvent.replace(':event_id', event.id);
       linkToSource = this.props.linkToSource.replace(':source_name', event.source);
+      linkToParentEvent = this.props.linkToEvent.replace(':event_id', event.parent_event_id);
       linkToTrigger = this.props.linkToTrigger.replace(':source_name', event.source);
       linkToTrigger = linkToTrigger.replace(':trigger_name', event.trigger);
     } else {
@@ -232,6 +233,16 @@ export class CardEvent extends React.Component {
           </EuiText>
 
           <EuiSpacer size="l" />
+
+          {event.parent_event_id &&
+            <React.Fragment>
+              <EuiText>
+                <strong>Parent event ID:</strong> <EuiLink href={linkToParentEvent}>{event.parent_event_id}</EuiLink>
+              </EuiText>
+
+              <EuiSpacer size="l" />
+            </React.Fragment>
+          }
 
           <EuiText>
             <strong>Jobs created:</strong> {event.jobs.length}
