@@ -103,7 +103,12 @@ export class Transition extends React.Component {
           >
             <EuiCodeBlock isCopyable language="json">
               {transition.error == null && 'null'}
-              {transition.error != null && JSON.stringify(JSON.parse(transition.error.message), null, 2)}
+              {transition.error != null && typeof transition.error.message == 'object' &&
+                JSON.stringify(JSON.parse(transition.error.message), null, 2)
+              }
+              {transition.error != null && typeof transition.error.message == 'string' &&
+                JSON.stringify(transition.error, null, 2)
+              }
             </EuiCodeBlock>
           </EuiComment>
         );
@@ -122,7 +127,12 @@ export class Transition extends React.Component {
           >
             <EuiCodeBlock isCopyable language="json">
               {transition.error == null && 'null'}
-              {transition.error != null && JSON.stringify(JSON.parse(transition.error.message), null, 2)}
+              {transition.error != null && typeof transition.error.message == 'object' &&
+                JSON.stringify(JSON.parse(transition.error.message), null, 2)
+              }
+              {transition.error != null && typeof transition.error.message == 'string' &&
+                JSON.stringify(transition.error, null, 2)
+              }
             </EuiCodeBlock>
           </EuiComment>
         );
