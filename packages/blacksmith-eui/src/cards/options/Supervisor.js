@@ -82,30 +82,6 @@ export class CardSupervisor extends React.Component {
         id: 'adapter',
         key: 'Adapter',
         value: names[supervisor.from],
-      }, {
-        id: 'node__',
-        key: 'Node Joined',
-        value: null,
-      }, {
-        id: 'node__name',
-        key: 'Node Joined / Name',
-        value: supervisor.node.name,
-        isValueCode: true,
-      }, {
-        id: 'node__address',
-        key: 'Node Joined / Address',
-        value: supervisor.node.address,
-        isValueCode: true,
-      }, {
-        id: 'node__tags',
-        key: 'Node Joined / Tags',
-        value: supervisor.node.tags,
-        isValueCode: true,
-      }, {
-        id: 'node__meta',
-        key: 'Node Joined / Meta',
-        value: supervisor.node.meta,
-        isValueCode: true,
       });
     }
 

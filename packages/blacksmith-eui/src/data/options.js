@@ -3,16 +3,7 @@ export const options = {
   "message": "Successful",
   "data": {
     "supervisor": {
-      "from": "consul",
-      "node": {
-        "name": "node-1",
-        "address": "https://consul-1.example.com",
-        "tags": ["blacksmith"],
-        "meta": {
-          "go_version": "1.15.3",
-          "blacksmith_version": "0.14.0"
-        }
-      }
+      "from": "consul"
     },
     "wanderer": {
       "from": "postgres"
