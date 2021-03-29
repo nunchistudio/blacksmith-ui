@@ -13,6 +13,12 @@ data engineering solution.
 
 ![Blacksmith Dashboard](https://nunchi.studio/images/blacksmith/dashboard.002.png)
 
+## Version compatibility
+
+This package follows the semantic versioning of [Blacksmith](https://github.com/nunchistudio/blacksmith)
+for major and minor versions. For example, the UI kit `v0.16.x` will be compatible
+with Blacksmith `v0.16.x`.
+
 ## Links
 
 - [Learn more on Nunchi website](https://nunchi.studio/blacksmith)
