@@ -5,7 +5,8 @@
   "keywords": [
     "blacksmith",
     "data",
-    "etl", "elt",
+    "etl",
+    "elt",
     "eui"
   ],
   "homepage": "https://nunchi.studio/storybook/blacksmith-eui",
@@ -36,39 +37,45 @@
   },
   "dependencies": {
     "axios": "~0.21.1",
-    "qs": "~6.9.6"
+    "qs": "~6.10.1"
   },
   "devDependencies": {
-    "@babel/core": "~7.12.10",
-    "@babel/plugin-proposal-class-properties": "~7.12.1",
-    "@babel/plugin-transform-runtime": "~7.12.10",
-    "@babel/preset-env": "~7.12.11",
-    "@babel/preset-react": "~7.12.10",
-    "@elastic/datemath": "~5.0.3",
-    "@elastic/eui": "~31.4.0",
-    "@storybook/addon-essentials": "~6.1.15",
-    "@storybook/addon-links": "~6.1.15",
-    "@storybook/addons": "~6.1.15",
+    "@babel/core": "~7.14.0",
+    "@babel/plugin-proposal-class-properties": "~7.13.0",
+    "@babel/plugin-transform-runtime": "~7.13.15",
+    "@babel/preset-env": "~7.14.1",
+    "@babel/preset-react": "~7.13.13",
+    "@elastic/datemath": "^5.0.2",
+    "@elastic/eui": "~33.0.0",
+    "@storybook/addon-essentials": "~6.2.9",
+    "@storybook/addon-links": "~6.2.9",
+    "@storybook/addons": "~6.2.9",
     "@storybook/preset-scss": "~1.0.3",
-    "@storybook/react": "~6.1.15",
-    "@storybook/theming": "~6.1.15",
+    "@storybook/react": "~6.2.9",
+    "@storybook/theming": "~6.2.9",
     "babel-loader": "~8.2.2",
-    "clean-webpack-plugin": "~3.0.0",
-    "css-loader": "~5.0.1",
+    "clean-webpack-plugin": "4.0.0-alpha.0",
+    "css-loader": "~5.2.4",
     "moment": "~2.29.1",
     "node-sass": "~5.0.0",
     "prop-types": "~15.7.2",
-    "react": "~17.0.1",
-    "react-dom": "~17.0.1",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
     "sass-loader": "~10.1.1",
     "style-loader": "~2.0.0",
     "util": "~0.12.3",
     "webpack": "^4.44.1",
-    "webpack-cli": "~4.3.1",
-    "webpack-node-externals": "~2.5.2"
+    "webpack-cli": "~4.7.0",
+    "webpack-node-externals": "~3.0.0",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6"
   },
   "peerDependencies": {
-    "react": "~17.0.1",
-    "react-dom": "~17.0.1"
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
   }
 }
