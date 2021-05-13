@@ -56,7 +56,7 @@ export const columns = {
     },
     {
       field: 'jobs',
-      name: 'Jobs created',
+      name: 'Filtered jobs',
       width: '15%',
       render: (jobs, row) => {
         if (jobs && Array.isArray(jobs)) {
