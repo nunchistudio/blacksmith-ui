@@ -5,15 +5,21 @@ about: You are experiencing an issue with a package that is different than the d
 
 ## Unexpected behavior
 
-*Please write a clear and concise description of what the bug is.*
+<!--
+Please write a clear and concise description of what the bug is.
+-->
 
 ## Steps to reproduce
 
-*Please indicate the steps needed to reproduce the previously described behavior.*
+<!--
+Please indicate the steps needed to reproduce the previously described behavior.
+-->
 
 ## Expected behavior
 
-*Please describe the behavior you were expected.*
+<!--
+Please describe the behavior you were expected.
+-->
 
 ## Environment
 
@@ -22,4 +28,6 @@ about: You are experiencing an issue with a package that is different than the d
 
 ## Additional context
 
-*Do you have anything to add ?*
+<!--
+Do you have anything to add?
+-->

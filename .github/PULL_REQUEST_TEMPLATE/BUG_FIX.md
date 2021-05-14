@@ -9,15 +9,21 @@ about: You fixed an unexpected behavior and want to share the fix to the communi
 
 ## Unexpected behavior
 
-*Please write a clear and concise description of what the bug is.*
+<!--
+Please write a clear and concise description of what the bug is.
+-->
 
 ## New and fixed behavior
 
-*Please describe the behavior you were expected.*
+<!--
+Please describe the behavior you were expected.
+-->
 
 - **Involved packages:**
   - `blacksmith-eui`
 
 ## Additional context
 
-*Do you have anything to add ?*
+<!--
+Do you have anything to add?
+-->

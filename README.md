@@ -11,10 +11,6 @@ Repository holding JavaScript packages for [Blacksmith](https://nunchi.studio/bl
 
   [Open the Storybook](https://nunchi.studio/storybook/blacksmith-eui)
 
-## Links
-
-- [Learn more on Nunchi website](https://nunchi.studio/blacksmith)
-
 ## License
 
 Repository licensed under the [Apache License, Version 2.0](./LICENSE).

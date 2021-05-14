@@ -19,10 +19,6 @@ This package follows the semantic versioning of [Blacksmith](https://github.com/
 for major and minor versions. For example, the UI kit `v0.16.x` will be compatible
 with Blacksmith `v0.16.x`.
 
-## Links
-
-- [Learn more on Nunchi website](https://nunchi.studio/blacksmith)
-
 ## License
 
 Repository licensed under the [Apache License, Version 2.0](./LICENSE).
