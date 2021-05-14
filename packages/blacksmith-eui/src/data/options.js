@@ -31,10 +31,10 @@ export const options = {
       }
     },
     "blacksmith": {
-      "version": "0.16.0"
+      "version": "0.17.0"
     },
     "go": {
-      "version": "1.16",
+      "version": "1.16.4",
       "environment": "darwin/amd64"
     }
   }

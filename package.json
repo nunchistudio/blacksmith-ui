@@ -1,6 +1,6 @@
 {
   "name": "@nunchistudio/blacksmith-ui",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "devDependencies": {
     "lerna": "~4.0.0"
   },
